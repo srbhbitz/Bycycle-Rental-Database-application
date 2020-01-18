@@ -1,0 +1,256 @@
+PRAGMA foreign_keys=OFF;
+BEGIN TRANSACTION;
+
+CREATE TABLE EmergencyContact(ContactNumber INTEGER PRIMARY KEY,FirstName VARCHAR(50) NOT NULL,LastName VARCHAR(50) NOT NULL);
+INSERT INTO EmergencyContact VALUES(968965896,'David','Glod');
+INSERT INTO EmergencyContact VALUES(9321932193,'Suraj','Jain');
+INSERT INTO EmergencyContact VALUES(9325932595,'Sean','Bean');
+INSERT INTO EmergencyContact VALUES(9632147852,'Tom','Harris');
+INSERT INTO EmergencyContact VALUES(9787978797,'Martin','Duss');
+INSERT INTO EmergencyContact VALUES(9856985698,'Matt','Devis');
+INSERT INTO EmergencyContact VALUES(9858741236,'Todd','Morris');
+INSERT INTO EmergencyContact VALUES(9874123695,'Nick','Town');
+INSERT INTO EmergencyContact VALUES(9874574589,'Suman','Suresh');
+INSERT INTO EmergencyContact VALUES(9875632140,'Beckey','Johanson');
+
+CREATE TABLE Employee( EmpId INTEGER PRIMARY KEY ,
+FirstName VARCHAR(25) NOT NULL,
+LastName VARCHAR(25) NOT NULL,
+GovtIdType VARCHAR(25) NOT NULL,
+GovtIdNumber INTEGER NOT NULL,
+PriContactNum INTEGER NOT NULL,
+SecContactNum INTEGER,
+EMailId VARCHAR(50) NOT NULL,
+Address VARCHAR(25) NOT NULL,
+Street VARCHAR(50) NOT NULL,
+City VARCHAR(15) NOT NULL,
+PinCode VARCHAR(15) NOT NULL,
+Provience VARCHAR(15) NOT NULL,
+CONSTRAINT UK_EMailId UNIQUE(EMailId),
+CONSTRAINT UK_PriContactNum UNIQUE(PriContactNum),
+CONSTRAINT UK_GovtIdNumber UNIQUE(GovtIdNumber)
+);
+INSERT INTO Employee VALUES(1,'Tim','Paine','DL',745263,9632074120,1023456879,'timpaine@fake.com','965','Stewart St','Peterborough','K9J3M1','Ontario');
+INSERT INTO Employee VALUES(2,'Chris','Morris','DL',854265,8956230741,1520364789,'chrismorris@fake.com','895','Gorge St.','Peterborough','K9J8K8','Ontario');
+INSERT INTO Employee VALUES(3,'Ellyse','Perry','DL',148529,9865320147,1542036987,'ellyseperry@fake.com','256','Kings St.','Peterborough','K9J2R8','Ontario');
+INSERT INTO Employee VALUES(4,'Sarah','Taylor','DL',789513,9874512036,1478520369,'sarahtaylor@fake.com','191','London St.','Peterborough','K9H2Y8','Ontario');
+INSERT INTO Employee VALUES(5,'Taran','Mathur','DL',123054,7059316548,2502506314,'taranmathur@fake.com','191','London St.','Peterborough','K9H2Y8','Ontario');
+INSERT INTO Employee VALUES(6,'Kiran','Singh','DL',147852,6321459870,9859876547,'kiraningh@fake.com','192','Downey St.','Peterborough','K9H2Y8','Ontario');
+INSERT INTO Employee VALUES(7,'Tim','Hortins','DL',136987,6565323269,9695969598,'timhortins@fake.com','193','Dundus St.','Peterborough','K9H2Y8','Ontario');
+INSERT INTO Employee VALUES(8,'Scott','McCandallis','DL',751359,9874521630,9759759854,'scottmccandallis@fake.com','194','Alymir St.','Peterborough','K9H2Y8','Ontario');
+INSERT INTO Employee VALUES(9,'Anthoney','Wayne','DL',553551,6586589393,9859459854,'anthoneywayne@fake.com','195','Kings St.','Peterborough','K9H2Y8','Ontario');
+INSERT INTO Employee VALUES(10,'Kent','RO','DL',332336,6326326565,9629429585,'kentro@fake.com','196','Hunter St.','Peterborough','K9H2Y8','Ontario');
+
+CREATE TABLE DamagedCycle(DmgId INTEGER PRIMARY KEY AUTOINCREMENT,
+ReplacePart VARCHAR(50) NOT NULL,
+Details VARCHAR(50) NOT NULL,
+DamagedDate datetime NOT NULL,
+RepairDate datetime NOT NULL,
+IncurredCost INTEGER
+);
+INSERT INTO DamagedCycle VALUES(1,'Tyre','Tyre was damaged and hence replaced','2019-10-16 12:00','2019-10-16 13:00',5);
+INSERT INTO DamagedCycle VALUES(2,'Chain','Chain became rusty, and hence need to replaced','2019-04-30 12:00','2019-04-30 13:00',10);
+INSERT INTO DamagedCycle VALUES(3,'SitCover','SitCover was damaged and hence replaced','2019-05-04 12:00','2019-05-04 13:00',5);
+INSERT INTO DamagedCycle VALUES(4,'Tyre','Tyre was damaged and hence replaced','2019-10-30 12:00','2019-10-30 13:00',5);
+INSERT INTO DamagedCycle VALUES(5,'Tyre','Tyre was damaged and hence replaced','2019-11-05 12:00','2019-10-05 13:00',5);
+INSERT INTO DamagedCycle VALUES(6,'Chain','Chain was damaged and hence replaced','2019-11-03 12:00','2019-11-03 13:00',5);
+INSERT INTO DamagedCycle VALUES(7,'Tyre and tube','Tyre  and tube was damaged and hence replaced','2019-11-08 12:00','2019-11-08 13:30',5);
+INSERT INTO DamagedCycle VALUES(8,'Handle','Handle and its grip was damaged and hence replaced','2019-11-10 12:00','2019-11-10 14:00',5);
+INSERT INTO DamagedCycle VALUES(9,'Tyre and tube','Tyre  and tube was damaged and hence replaced','2019-10-31 12:00','2019-10-31 13:00',5);
+INSERT INTO DamagedCycle VALUES(10,'Paidal','Paidal was damaged and hence replaced','2019-11-02 12:00','2019-11-02 13:00',5);
+
+CREATE TABLE Bicycle(RegNum INTEGER PRIMARY KEY AUTOINCREMENT,
+CycleBrand VARCHAR(50) NOT NULL,
+Available INTEGER NOT NULL,
+DateOfPurchase datetime NOT NULL,
+CycleTypeName VARCHAR(50) NOT NULL,
+CostPerDay INTEGER NOT NULL
+);
+INSERT INTO Bicycle VALUES(1230,'Eurobike','Y','2018-10-11 10:00:00:00','Mountain',25);
+INSERT INTO Bicycle VALUES(1231,'RONSHIN','Y','2018-10-11 10:00:00','Mountain',25);
+INSERT INTO Bicycle VALUES(1232,'ATOPONE','N','2018-10-11 10:00:00','Mountain',25);
+INSERT INTO Bicycle VALUES(1233,'RetroSpec','Y','2019-04-03 10:00:00','Hybrid',20);
+INSERT INTO Bicycle VALUES(1234,'SixthreeZero','N','2019-04-03 10:00:00','Hybrid',20);
+INSERT INTO Bicycle VALUES(1235,'SixthreeZero','Y','2019-04-03 10:00:00','Hybrid',20);
+INSERT INTO Bicycle VALUES(1236,'State','Y','2018-08-04 10:00:00','Sports',30);
+INSERT INTO Bicycle VALUES(1237,'BuckDirect','Y','2018-08-04 10:00:00','Sports',30);
+INSERT INTO Bicycle VALUES(1238,'State','Y','2018-08-04 10:00:00','Sports',30);
+INSERT INTO Bicycle VALUES(1239,'BuckDirect','Y','2018-08-04 10:00:00','Sports',30);
+
+CREATE TABLE Customer(EMailId VARCHAR(50) PRIMARY KEY,
+FirstName VARCHAR(50) NOT NULL,
+LastName VARCHAR(50) NOT NULL,
+GovtIdType VARCHAR(50) NOT NULL,
+GovtIdNumber INTEGER NOT NULL,
+PriContactNum INTEGER NOT NULL,
+SecContactNum INTEGER,
+Address VARCHAR(50) NOT NULL,
+Street VARCHAR(50) NOT NULL,
+City VARCHAR(50) NOT NULL,
+Provience VARCHAR(50) NOT NULL,
+PinCode VARCHAR(15) NOT NULL,
+CONSTRAINT UK_PriContactNum UNIQUE(PriContactNum),
+CONSTRAINT UK_GovtIdNumber UNIQUE(GovtIdNumber)
+);
+INSERT INTO Customer VALUES('chrisgayle@fake.com','Chris','Gayle','DL',852134,8965230147,7410258963,'219','Stewart Street','Peterborough','Ontario','K9J 3M7');
+INSERT INTO Customer VALUES('samualjackson@fake.com','Samual','Jackson','DL',854125,8957463210,7896541230,'159','York Street','Peterborough','Ontario','K9J2F6');
+INSERT INTO Customer VALUES('rahilkacchi@fake.com','Rahil','Kacchi','DL',856325,8976543210,7845963210,'539','Queen Street','Peterborough','Ontario','K9J8M7');
+INSERT INTO Customer VALUES('taylorswift@fake.com','Taylor','Swift','DL',852064,8974561230,7054123698,'584','Dalhouse Street','Peterborough','Ontario','K9J9H6');
+INSERT INTO Customer VALUES('alestercook@fake.com','Alester','Cook','DL',963251,8520147963,7051234569,'520','Stewart Street','Peterborough','Ontario','K9J 3M7');
+INSERT INTO Customer VALUES('kevinpeterson@fake.com','Kevin','Peterson','DL',987456,8569741230,7057057051,'741','York Street','Peterborough','Ontario','K9J2F6');
+INSERT INTO Customer VALUES('rickeyponting@fake.com','Rickey','Ponting','DL',654789,8547961230,7021458200,'963','Queen Street','Peterborough','Ontario','K9J8M7');
+INSERT INTO Customer VALUES('adamgalchrist@fake.com','Adam','Galchrist','DL',741258,8520741369,7050021002,'78','Dalhouse Street','Peterborough','Ontario','K9J9H6');
+INSERT INTO Customer VALUES('stevesmith@fake.com','Steve','Smith','DL',965874,8574960213,7056321480,'21','Reid Street','Peterborough','Ontario','K9J8M7');
+INSERT INTO Customer VALUES('breetlee@fake.com','Breet','Lee','DL',741236,8520147364,7410258736,'120','London Street','Peterborough','Ontario','K9J9H6');
+
+CREATE TABLE Gear(GearId INTEGER PRIMARY KEY AUTOINCREMENT,
+GName VARCHAR(50) NOT NULL,
+GCostPerDay INTEGER NOT NULL,
+GLateFeesPerHour INTEGER,
+GCompany VARCHAR(50));
+INSERT INTO Gear VALUES(1,'Helmet',7,10,'Bell');
+INSERT INTO Gear VALUES(2,'Helmet',5,10,'Fox');
+INSERT INTO Gear VALUES(3,'Helmet',6,10,'Giro');
+INSERT INTO Gear VALUES(4,'Helmet',5,10,'Oakley');
+INSERT INTO Gear VALUES(5,'Horn',5,10,'KnogPlus');
+INSERT INTO Gear VALUES(6,'Light',3,10,'KnogPlus');
+INSERT INTO Gear VALUES(7,'Helmet',4,10,'Oakley');
+INSERT INTO Gear VALUES(8,'Horn',8,10,'KnogPlus');
+INSERT INTO Gear VALUES(9,'Light',6,10,'KnogPlus');
+INSERT INTO Gear VALUES(10,'Light',3,10,'Oakley');
+
+CREATE TABLE Discount(DisCode INTEGER PRIMARY KEY AUTOINCREMENT,
+DisPercent INTEGER NOT NULL,
+DisExpireDate datetime NOT NULL);
+INSERT INTO Discount VALUES(1234,5,'2019-10-15 23:59:59');
+INSERT INTO Discount VALUES(7403,30,'2018-10-31 23:59:59');
+INSERT INTO Discount VALUES(7412,5,'2018-10-15 23:59:59');
+INSERT INTO Discount VALUES(7469,20,'2018-10-31 23:59:59');
+INSERT INTO Discount VALUES(7485,10,'2018-10-20 23:59:59');
+INSERT INTO Discount VALUES(8520,20,'2019-10-31 23:59:59');
+INSERT INTO Discount VALUES(9586,20,'2019-5-31 23:59:59');
+INSERT INTO Discount VALUES(9632,5,'2019-5-15 23:59:59');
+INSERT INTO Discount VALUES(9652,10,'2019-5-20 23:59:59');
+INSERT INTO Discount VALUES(9876,10,'2019-10-20 23:59:59');
+
+CREATE TABLE Booking(BookingID INTEGER PRIMARY KEY AUTOINCREMENT ,
+BookingDate datetime default current_timestamp,
+ReturingDate datetime NOT NULL,
+CountOfCycle INTEGER NOT NULL,
+CountOfGear INTEGER
+);
+INSERT INTO Booking VALUES(1,'2019-10-15 12:00','2019-10-16 12:00',1,1);
+INSERT INTO Booking VALUES(2,'2019-04-29 12:00','2019-04-30 12:00',1,1);
+INSERT INTO Booking VALUES(3,'2019-05-03 12:00','2019-05-04 12:00',1,1);
+INSERT INTO Booking VALUES(4,'2019-08-04 12:00','2019-08-05 12:00',1,1);
+INSERT INTO Booking VALUES(5,'2019-10-15 12:00:00','2019-10-16 12:00:00',1,1);
+INSERT INTO Booking VALUES(6,'2019-04-29 12:00:00','2019-04-30 12:00:00',1,1);
+INSERT INTO Booking VALUES(7,'2019-05-03 12:00:00','2019-05-04 12:00:00',1,1);
+INSERT INTO Booking VALUES(8,'2019-10-15 12:00:00','2019-10-16 12:00:00',1,1);
+INSERT INTO Booking VALUES(9,'2019-04-29 12:00:00','2019-04-30 12:00:00',1,1);
+INSERT INTO Booking VALUES(10,'2019-05-03 12:00:00','2019-05-04 12:00:00',1,1);
+
+CREATE TABLE Billing(BillingNum INTEGER PRIMARY KEY AUTOINCREMENT,
+BillingDate datetime NOT NULL,
+ActualReturnDate datetime NOT NULL,
+AmountOfCycle INTEGER,
+AmountOfGear INTEGER,
+ExtraCharge INTEGER,
+SubTotAmount INTEGER,
+DiscAmount INTEGER,
+TaxAmount INTEGER,
+TotalAmount INTEGER);
+INSERT INTO Billing VALUES(1,'2019-10-16 12:00','2019-10-16 12:00',30,5,0,35,0,4.5499999999999998223,39.549999999999997158);
+INSERT INTO Billing VALUES(2,'2019-04-30 12:00','2019-04-30 12:00',25,6,0,31,6.2000000000000001776,4.0300000000000002486,28.829999999999998294);
+INSERT INTO Billing VALUES(3,'2019-05-04 12:00','2019-05-04 12:00',20,5,0,25,2.5,3.25,25.75);
+INSERT INTO Billing VALUES(4,'2019-08-05 12:00','2019-08-05 12:00',20,7,0,27,1.3500000000000000888,3.5099999999999997868,29.160000000000000142);
+INSERT INTO Billing VALUES(5,'2019-10-16 12:00','2019-10-16 12:00',30,3,0,33,0,4.2900000000000000355,37.289999999999999147);
+INSERT INTO Billing VALUES(6,'2019-04-30 12:00','2019-04-30 12:00',30,3,0,33,0,4.2900000000000000355,37.289999999999999147);
+INSERT INTO Billing VALUES(7,'2019-05-04 12:00','2019-05-04 14:00',20,5,2.5,27.5,5.5,3.5750000000000001776,25.574999999999999289);
+INSERT INTO Billing VALUES(8,'2019-10-16 12:00','2019-10-16 12:00',20,6,0,26,5.2000000000000001776,3.3799999999999998934,24.179999999999999716);
+INSERT INTO Billing VALUES(9,'2019-04-30 12:00','2019-04-30 12:00',25,7,0,25,2.5,3.25,25.75);
+INSERT INTO Billing VALUES(10,'2019-05-04 12:00','2019-05-04 12:00',25,5,0,25,1.25,3.25,27);
+
+CREATE TABLE EmployeeEmergencyContact(EmpIDNo INTEGER NOT NULL,
+ConNum INTEGER  NOT NULL,
+Relation VARCHAR(50) NOT NULL,
+CONSTRAINT FK_EmployeeEmergencyContact_ConNum_2_EmergencyContact_ContactNumber FOREIGN KEY(ConNum) REFERENCES EmergencyContact(ContactNumber),
+CONSTRAINT FK_EmployeeEmergencyContact_EmpIDNo_2_Employee_EmpId FOREIGN KEY(EmpIDNo) REFERENCES Employee(EmpId)
+UNIQUE(EmpIDNo,ConNum));
+INSERT INTO EmployeeEmergencyContact VALUES(1,9874123695,'Brother');
+INSERT INTO EmployeeEmergencyContact VALUES(2,9875632140,'Aunt');
+INSERT INTO EmployeeEmergencyContact VALUES(3,9632147852,'Uncle');
+INSERT INTO EmployeeEmergencyContact VALUES(4,9858741236,'Sister');
+INSERT INTO EmployeeEmergencyContact VALUES(5,9874574589,'Brother');
+INSERT INTO EmployeeEmergencyContact VALUES(6,9856985698,'Father');
+INSERT INTO EmployeeEmergencyContact VALUES(7,968965896,'Cousin');
+INSERT INTO EmployeeEmergencyContact VALUES(8,9321932193,'Friend');
+INSERT INTO EmployeeEmergencyContact VALUES(9,9325932595,'Spouse');
+INSERT INTO EmployeeEmergencyContact VALUES(10,9787978797,'Friend');
+
+CREATE TABLE EmployeeDamagedCycle(DamagId INTEGER,
+EmpIdent INTEGER NOT NULL,
+CONSTRAINT FK_EmployeeDamagedCycle_DamagId_2_DamagedCycle_DmgId FOREIGN KEY(DamagId) REFERENCES DamagedCycle(DmgId),
+CONSTRAINT FK_EmployeeDamagedCycle_EmpIdent_2_Employee_EmpId FOREIGN KEY(EmpIdent) REFERENCES Employee(EmpId)
+UNIQUE(EmpIdent,DamagId));
+INSERT INTO EmployeeDamagedCycle VALUES(2,1);
+INSERT INTO EmployeeDamagedCycle VALUES(1,2);
+INSERT INTO EmployeeDamagedCycle VALUES(4,3);
+INSERT INTO EmployeeDamagedCycle VALUES(3,4);
+INSERT INTO EmployeeDamagedCycle VALUES(5,5);
+INSERT INTO EmployeeDamagedCycle VALUES(7,6);
+INSERT INTO EmployeeDamagedCycle VALUES(6,7);
+INSERT INTO EmployeeDamagedCycle VALUES(8,10);
+INSERT INTO EmployeeDamagedCycle VALUES(9,3);
+INSERT INTO EmployeeDamagedCycle VALUES(10,7);
+
+CREATE TABLE BicycleDamagedCycles(DamagId INTEGER NOT NULL,
+RegId INTEGER NOT NULL,
+CONSTRAINT FK_BicycleDamagedCycles_DamagId_2_DamagedCycle_DmgId FOREIGN KEY(DamagId) REFERENCES DamagedCycle(DmgId),
+CONSTRAINT FK_BicycleDamagedCycles_RegId_2_Bicycle_RegNum FOREIGN KEY(RegId) REFERENCES Bicycle(RegNum)
+);
+INSERT INTO BicycleDamagedCycles VALUES(2,1239);
+INSERT INTO BicycleDamagedCycles VALUES(1,1230);
+INSERT INTO BicycleDamagedCycles VALUES(4,1236);
+INSERT INTO BicycleDamagedCycles VALUES(3,1232);
+INSERT INTO BicycleDamagedCycles VALUES(5,1231);
+INSERT INTO BicycleDamagedCycles VALUES(6,1232);
+INSERT INTO BicycleDamagedCycles VALUES(7,1236);
+INSERT INTO BicycleDamagedCycles VALUES(8,1238);
+INSERT INTO BicycleDamagedCycles VALUES(9,1237);
+INSERT INTO BicycleDamagedCycles VALUES(10,1239);
+
+CREATE TABLE BorrowerWithAll(GearIdNo INTEGER,
+RegIdNo INTEGER,
+EMailIde VARCHAR(50) NOT NULL,
+DisCodeNo INTEGER,
+BookingIDNo INTEGER NOT NULL,
+BillingIdNum INTEGER NOT NULL,
+CONSTRAINT FK_BorrowerWithAll_GearIdNo_2_Gear_GearId FOREIGN KEY(GearIdNo) REFERENCES Gear(GearId),
+CONSTRAINT FK_BorrowerWithAll_RegIdNo_2_Bicycle_RegNum FOREIGN KEY(RegIdNo) REFERENCES Bicycle(RegNum),
+CONSTRAINT FK_BorrowerWithAll_EMailIde_2_Customer_EMailId FOREIGN KEY(EMailIde) REFERENCES Customer(EMailId),
+CONSTRAINT FK_BorrowerWithAll_DisCodeNo_2_Discount_DisCode FOREIGN KEY(DisCodeNo) REFERENCES Discount(DisCode),
+CONSTRAINT FK_BorrowerWithAll_BookingIDNo_2_Booking_BookingID FOREIGN KEY(BookingIDNo) REFERENCES Booking(BookingID),
+CONSTRAINT FK_BorrowerWithAll_BillingIdNum_2_Billing_BillingNum FOREIGN KEY(BillingIdNum) REFERENCES Billing(BillingNum),
+UNIQUE(BookingIDNo,BillingIdNum)
+);
+INSERT INTO BorrowerWithAll VALUES(2,1239,'chrisgayle@fake.com',NULL,1,1);
+INSERT INTO BorrowerWithAll VALUES(3,1230,'samualjackson@fake.com',8520,2,2);
+INSERT INTO BorrowerWithAll VALUES(5,1233,'rahilkacchi@fake.com',9876,3,3);
+INSERT INTO BorrowerWithAll VALUES(1,1235,'taylorswift@fake.com',1234,4,4);
+INSERT INTO BorrowerWithAll VALUES(2,1236,'stevesmith@fake.com',8520,7,7);
+INSERT INTO BorrowerWithAll VALUES(3,1233,'adamgalchrist@fake.com',8520,8,8);
+INSERT INTO BorrowerWithAll VALUES(1,1230,'rickeyponting@fake.com',9876,9,9);
+INSERT INTO BorrowerWithAll VALUES(4,1231,'breetlee@fake.com',1234,10,10);
+INSERT INTO BorrowerWithAll VALUES(6,1238,'alestercook@fake.com',NULL,5,5);
+INSERT INTO BorrowerWithAll VALUES(8,1237,'kevinpeterson@fake.com',NULL,6,6);
+DELETE FROM sqlite_sequence;
+INSERT INTO sqlite_sequence VALUES('Bicycle',1239);
+INSERT INTO sqlite_sequence VALUES('Gear',10);
+INSERT INTO sqlite_sequence VALUES('Discount',9876);
+INSERT INTO sqlite_sequence VALUES('Booking',10);
+INSERT INTO sqlite_sequence VALUES('Billing',10);
+INSERT INTO sqlite_sequence VALUES('DamagedCycle',10);
+COMMIT;
+1.1
+1.1
